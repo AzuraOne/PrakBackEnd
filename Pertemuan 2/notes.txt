@@ -1,0 +1,3 @@
+- kurang iterable php
+- static method dan static proterties
+- access modifier

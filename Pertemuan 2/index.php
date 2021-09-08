@@ -49,7 +49,7 @@ class gamemoba extends game{
 $gamemoba1 = new gamemoba("mobile legend", "MMORPG", "Rp 282193818391831");
 $gamemoba1->message();
 $gamemoba1->intro();
-$gamemoba1->printIterable($arrays);
+printIterable($arrays);
 
 
 $gamemoba2 = new gamemoba("League of Legend", "MMORPG", "Rp 1299210312931093");

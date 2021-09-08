@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php 
-class managergame {
+class game {
     public $name;
     protected $genre;
     private $penghasilan;
@@ -20,18 +20,26 @@ class managergame {
 
     }
     public function intro(){
-        echo "i am a moba game {$this->name} and the genre is {$this->genre}, pendapatan total {$this->penghasilan}. ";
+        $items = "{$this->name}, {$this->genre}, {$this->penghasilan}";
+        $arrays = (explode(",", $items));
+
+        echo "i am a moba game {$this->name} and the genre is {$this->genre}, pendapatan total {$this->penghasilan}.";
         echo "<br></br>";
 
     }
+    function printIterable(iterable $itemiterable){
+        foreach($itemiterable as $item){
+            echo $item;
+        }
+    }
     public function __destruct()
 	{
-		echo "Object telah dihapus dari memory";
+		echo "Fungsi Destruct Telah dijalankan";
 	}
 
 }
 // Inherit from manager Game
-class gamemoba extends managergame{
+class gamemoba extends game{
     public function message(){
         echo "Apakah Aku game moba? ";
 
@@ -40,6 +48,8 @@ class gamemoba extends managergame{
 $gamemoba1 = new gamemoba("mobile legend", "MMORPG", "Rp 282193818391831");
 $gamemoba1->message();
 $gamemoba1->intro();
+
+
 
 $gamemoba2 = new gamemoba("League of Legend", "MMORPG", "Rp 1299210312931093");
 $gamemoba2-> message();

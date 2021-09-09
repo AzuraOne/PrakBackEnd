@@ -1,10 +1,12 @@
 <?php
-function printIterable(iterable $myIterable) {
-  foreach($myIterable as $item) {
-    echo $item;
-  }
-}
 
-$arr = ["a", "b", "c"];
-printIterable($arr);
+$str = "Hello Friend";
+
+$arr1 = str_split($str);
+$arr2 = str_split($str, 3);
+
+print_r($arr1);
+echo "<br></br>";
+print_r($arr2);
+
 ?>

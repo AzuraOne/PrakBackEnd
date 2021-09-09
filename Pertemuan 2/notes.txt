@@ -1,3 +1,3 @@
-- kurang iterable php
-- static method dan static proterties
-- access modifier
+- kurang iterable php (Selesai)
+- static method dan static proterties (Selesai)
+- access modifier (Selesai)

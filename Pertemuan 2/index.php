@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tugas Back End</title>
+    <title>Tugas Back End</title> 
+    <!-- Membuat Title berjudul Tugas Back End -->
 </head>
 
 <body>
@@ -15,16 +16,21 @@
             <li><label for="Nama">Masukan Nama Game</label>
                 <input type="text" name="Nama">
             </li>
+            <!-- Memberikan nama pada input nama game dengan label -->
             <li><label for="genre">Masukkan Genre Game</label>
                 <input type="text" name="genre">
             </li>
+            <!-- Memberikan nama pada input nama game dengan label   -->
             <li>
                 <label for="penghasilan">Masukkan Penghasilan Game</label>
                 <input type="text" name="penghasilan">
             </li>
+            <!-- Memberikan label penghasilan game pada input penghasilan -->
             <li>
                 <input type="submit" name="submit">
+                <!-- Untuk melakukan submit biasa -->
                 <input type="submit" name="array" value="jadikan Array">
+                <!-- Untuk menjadikan array dan menjadikan itterable -->
             </li>
         </ul>
     </form>
@@ -32,16 +38,19 @@
     interface gamemanager {
         public function get_os();
       }
+    //   interface berfungsi untuk get_os() dapat diakses class dan turunanan maupun banyak class
       
       
-    function printIterable(iterable $itemiterable)
+    function Looping(iterable $ItemLooping)
     {
-        foreach ($itemiterable as $item) {
-            echo $item;
+        echo "Berisi :";
+        foreach ($ItemLooping as $item) {
+            echo $item . " ";
         }
-        str_split($item);
+        
         
     }
+    // Melakukan looping pada saat menjalanan fungsi
     
     class game implements gamemanager
     {
@@ -49,6 +58,7 @@
         private $penghasilan;
         public  $genre;
         public static $os = "Android";
+        // Properties pada class game 
 
 
         public function __construct($name,  $genre ,$penghasilan)
@@ -60,15 +70,17 @@
             $this->penghasilan = $penghasilan;
 
         }
+        // Constructor pada class game yang berfungsi untuk dijalankan pada awal - awal
         public function get_os(){
             return self::$os;
         }
-
+        // Berfungsi mengambil data static variabel os
         public function get_all(){
             $keystrong = array(self::$os, $this->name, $this->genre, $this->penghasilan);
             return $keystrong;
             
         }
+        // Mendapatkan semua properties lalu disimpan ke array
 
         
 
@@ -80,32 +92,44 @@
             echo "<br></br>";
         }
 
+        // Melakukan print text ke layar
         
         public function __destruct()
         {
-            echo "Fungsi Destruct Telah dijalankan";
+
+            echo "<br>Operasi Telah Dijalankan";
+         
         }
+        // Memberikan tulisan ketika seluruh fungsi telah dijalankan
     }
     // Inherit from manager Game
-    class gamemoba extends game
+    class gamemoba extends game implements gamemanager
     {
+        public function get_os(){
+            return self::$os;
+        }
+        // Menggunakan properties OS dengan interface 
+
         public function message()
+
         {   echo "<br>";
             echo "Game Moba : ";
         }
+        // Berfungsi untuk menuliskan pesan 
     }
     if (isset($_POST['submit'])) {
         $name = $_POST['Nama'];
         $genre = $_POST['genre'];
         $penghasilan = $_POST['penghasilan'];
     
-        
-        $game = array($name, $genre, $penghasilan);
-        
+        // Mendeklarasikan variabel $nama, $genre, dan $penghasilan jika melakukan klik submit
     
         $produk1 = new gamemoba($name, $genre,$penghasilan);
+        // membuat Objek $produk1
         $produk1->message();
+        // mengakses class game dari class gamemoba  kemudian mengakses method message
         $produk1->intro();
+        // Mengakses method intro pada class gamemoba
         
         
 
@@ -114,16 +138,23 @@
         $name = $_POST['Nama'];
         $genre = $_POST['genre'];
         $penghasilan = $_POST['penghasilan'];
-
+        // Mendeklarasikan variabel $nama, $genre, dan $penghasilan jika melakukan klik submit
+        
 
         $produk1 = new gamemoba($name, $genre,$penghasilan);
-        $meong = $produk1->get_all();
-        print_r($meong);
-    }
-    else {
+        // Membuat objek produk 1
+        
+       
+        print_r($produk1->get_all());
+        // Menampilkan semua properties dalam bentuk array
+        
+        echo "<br>";
+        // Melakukan break agar tulisan rapi tersusun kebawah
+
+        Looping($produk1->get_all());
+        // Mendapatkan seluruh properties yang ada di class game dari class gamemoba dalam bentuk string
         
     }
-
 
     ?>
 

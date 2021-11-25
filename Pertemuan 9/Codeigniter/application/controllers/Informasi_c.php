@@ -37,6 +37,7 @@ class Informasi_c extends CI_Controller {
         $config['max_height'] = '2000';
         $this->upload->initialize($config);
         $this->informasi_m->add();
+        redirect('informasi_c/index');
 
 
     }
@@ -44,6 +45,12 @@ class Informasi_c extends CI_Controller {
     //Update one item
     public function update( $id = NULL )
     {
+
+
+        $this->form_validation->set_rules('judul', 'Judul Buku', 'required');
+        $this->form_validation->set_rules('detail', 'Detail', 'required');
+
+        $data['inform']  = $this->informasi_m->getAll($id);
         // Configurasi File
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'jpg|png|jpeg';
@@ -53,17 +60,24 @@ class Informasi_c extends CI_Controller {
         $config['max_width'] = '2000';
         $config['max_height'] = '2000';
         $this->upload->initialize($config);
-        $this->informasi_m->update();
+        
+
+        if ($this->form_validation->run()) {
+            $this->informasi_m->update();
+            
+            redirect('informasi_c/index');
+        }
+        $this->load->view('informasi/updateinfo', $data);
 
     }
 
     //Delete one item
     public function delete( $id = NULL )
     {
-        print_r($id);
-        $this->Bukuproduk_m->delete($id);
+        
+        $this->informasi_m->delete($id);
         $this->session->set_flashdata('success', 'Berhasil dihapus');
-        redirect('Bukuproduk_c/index');
+        redirect('informasi_c/index');
 
     }
 }

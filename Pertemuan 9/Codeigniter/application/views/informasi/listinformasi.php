@@ -24,7 +24,9 @@
         <script>
             alert('<?php echo $this->session->flashdata('success'); ?>')
         </script>
-    <?php endif; ?>
+    <?php 
+    $this->session->sess_destroy();
+    endif; ?>
 
 
     <table border="1">
@@ -39,6 +41,7 @@
             <th>lampiran</th>
             <th>Jenis</th>
             <th>Kualitas</th>
+            <th>Pengiriman</th>
 
             <th>Aksi</th>
         </tr>
@@ -52,6 +55,7 @@
                     <td><img src="<?= base_url('uploads/') . $info['file']; ?>" alt="foto" width="200px" height="200px"></td>
                     <td><?= $info['jenis']; ?></td>
                     <td><?= $info['kualitas']; ?></td>
+                    <td><?= $info['checkbox']; ?></td>
                     <td>
                         <ul>
                             <li><a href="<?php echo site_url('Informasi_c/update/') . $info['id_info']; ?>" class="update"><i class="fas fa-edit"></i>Update Data</a></li>

@@ -6,8 +6,8 @@ class Informasi_m extends CI_Model
 
     public function add()
     {
-
-
+       
+        $checkbox = implode(" , ", $this->input->post('fast'));
         $file = $this->upload->do_upload('uploading');
 
         if ($file) {
@@ -32,7 +32,7 @@ class Informasi_m extends CI_Model
             'file' => $file,
             'jenis' => $this->input->post('jenis'),
             'kualitas' => $this->input->post('pilihan'),
-            'checkbox' => $this->input->post('fast')
+            'checkbox' => $checkbox
 
         );
         $this->db->insert('pemesanan', $data);
@@ -52,7 +52,8 @@ class Informasi_m extends CI_Model
     }
 
     public function update($id = NULL)
-    {
+    {   
+        
         $file = $this->upload->do_upload('uploading');
 
         if ($file) {
@@ -61,8 +62,8 @@ class Informasi_m extends CI_Model
 
             $file = $data['file_name'];
         } else {
+            $file = $this->input->post('gambar');
             
-            $file = 'default.jpg';
         }
         
         $id = $this->input->post('id_info');

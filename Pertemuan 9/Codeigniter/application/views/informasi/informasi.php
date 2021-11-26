@@ -59,7 +59,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
             <div class="mb-3">
                 <label for="fast" class="form-check-label">Pengiriman cepat</label>
-                <input type="checkbox" name="fast" id="fast" value="Cepat" class="form-check-input">
+                <input type="checkbox" name="fast[]" id="fast" value="Cepat" class="form-check-input">
+            </div>
+
+            <div class="mb-3">
+                <label for="fast" class="form-check-label">Perlindungan Barang</label>
+                <input type="checkbox" name="fast[]" id="fast" value="Lindungi" class="form-check-input">
             </div>
 
             <div class="mb-3"><label for="pilihan" class="form-check-label">Pilih Kualitas</label>

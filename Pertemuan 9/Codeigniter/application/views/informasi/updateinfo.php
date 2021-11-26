@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                 <div class="mb-3"><input class="form-control" type="date" name="tanggal" id="tanggal" value="<?php echo $key['tanggal']; ?>"></div>
 
-
+                <div class="mb-3">
+                    <h1><?php echo $key['file']; ?></h1>
+                    <input type="hidden" name="gambar" value="<?php echo $key['file']; ?>">
+                    <img src="<?= base_url('uploads/') . $key['file']; ?>" alt="foto" srcset="">
+                </div>
                 <div class="mb-3"><input class="form-control" type="file" name="uploading" id="uploading" value="<?php echo $key['id_info']; ?>"></div>
 
                 <div class="mb-3"><select class="form-select" name="jenis" id="jenis">
@@ -48,10 +53,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                     </select></div>
 
-                <div class="mb-3"> <label for="fast" class="form-check-label">Pengiriman cepat</label>
+                <?php
+                $check = explode(' , ', $key['checkbox']);
+                ?>
+                
 
-                    <input class="form-check-input" type="checkbox" name="fast" id="fast" <?php if ($key['checkbox'] == "Cepat")  echo 'checked="checked"';  ?> value="Cepat">
-                </div>
+                    <div class="mb-3"> <label for="fast" class="form-check-label">Pengiriman cepat</label>
+                        <label for="fast" class="form-check-label">Pengiriman cepat</label>
+                        <input class="form-check-input" type="checkbox" name="fast[]" id="fast" <?php if ($check[0] == "Cepat")  echo 'checked="checked"';  ?> value="Cepat">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fast" class="form-check-label">Perlindungan Barang</label>
+                        <input type="checkbox" name="fast[]" id="fast" value="Lindungi" <?php if ($check[1] == "Lindungi")  echo 'checked="checked"';  ?> class="form-check-input">
+                    </div>
+                
 
                 <div class="mb-3"> <label for="pilihan">Pilih Kualitas</label>
                     <input class="form-check-input" type="radio" name="pilihan" id="pilihan" <?php if ($key['kualitas'] == 'Koran') echo 'checked="checked"'; ?> value="Koran">Kertas koran

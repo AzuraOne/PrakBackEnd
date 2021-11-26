@@ -37,7 +37,7 @@ class Informasi_c extends CI_Controller {
         $config['max_height'] = '2000';
         $this->upload->initialize($config);
         $this->informasi_m->add();
-        // redirect('informasi_c/index');
+        redirect('informasi_c/index');
 
 
     }

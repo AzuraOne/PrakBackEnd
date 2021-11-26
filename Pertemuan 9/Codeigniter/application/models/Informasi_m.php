@@ -52,8 +52,9 @@ class Informasi_m extends CI_Model
     }
 
     public function update($id = NULL)
-    {   
-        
+    {   print_r($this->input->post('fast'));
+        $checkbox = implode(" , ", $this->input->post('fast'));
+       
         $file = $this->upload->do_upload('uploading');
 
         if ($file) {
@@ -67,7 +68,7 @@ class Informasi_m extends CI_Model
         }
         
         $id = $this->input->post('id_info');
-        $checkbox =  $this->input->post('fast');
+        
         if (empty($checkbox)) $checkbox = "Normal"; 
 
 

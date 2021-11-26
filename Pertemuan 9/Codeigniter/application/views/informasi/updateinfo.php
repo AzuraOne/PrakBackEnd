@@ -60,11 +60,11 @@ error_reporting(0);
 
                     <div class="mb-3"> <label for="fast" class="form-check-label">Pengiriman cepat</label>
                         <label for="fast" class="form-check-label">Pengiriman cepat</label>
-                        <input class="form-check-input" type="checkbox" name="fast[]" id="fast" <?php if ($check[0] == "Cepat")  echo 'checked="checked"';  ?> value="Cepat">
+                        <input class="form-check-input" type="checkbox" name="fast[]" id="fast" <?php in_array ('Cepat', $check) ? print "checked" : ""; ?> value="Cepat">
                     </div>
                     <div class="mb-3">
                         <label for="fast" class="form-check-label">Perlindungan Barang</label>
-                        <input type="checkbox" name="fast[]" id="fast" value="Lindungi" <?php if ($check[1] == "Lindungi")  echo 'checked="checked"';  ?> class="form-check-input">
+                        <input type="checkbox" name="fast[]" id="fast" value="Lindungi" <?php in_array ('Lindungi', $check) ? print "checked" : ""; ?> class="form-check-input">
                     </div>
                 
 
